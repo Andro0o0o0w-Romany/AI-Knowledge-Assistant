@@ -1,0 +1,62 @@
+version: "3.8"
+
+# Development Docker Compose - with hot reloading
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: knowledge-assistant-backend-dev
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_NAME=AI Knowledge Assistant (Dev)
+      - DEBUG=true
+      - SECRET_KEY=dev-secret-key-for-development-only
+      - DATABASE_URL=sqlite+aiosqlite:///./data/knowledge_assistant.db
+      # LLM Provider: "anthropic" or "openai"
+      - LLM_PROVIDER=${LLM_PROVIDER:-anthropic}
+      # Anthropic/Claude settings
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-haiku-4-5-20251001}
+      # OpenAI settings (used for embeddings, and as fallback LLM)
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-3.5-turbo}
+      - VECTOR_STORE_PATH=/app/data/vector_store
+      - UPLOAD_DIR=/app/data/uploads
+      - CORS_ORIGINS=["http://localhost:3000"]
+      - ANONYMIZED_TELEMETRY=False
+    volumes:
+      - ./backend:/app
+      - backend-data-dev:/app/data
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    networks:
+      - app-network-dev
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: knowledge-assistant-frontend-dev
+    ports:
+      - "3000:3000"
+    environment:
+      - API_URL=http://backend:8000
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    networks:
+      - app-network-dev
+
+volumes:
+  backend-data-dev:
+    driver: local
+
+networks:
+  app-network-dev:
+    driver: bridge
+
