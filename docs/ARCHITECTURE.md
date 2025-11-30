@@ -214,7 +214,7 @@ CREATE TABLE chat_messages (
    └─> Update status: processing
    └─> Extract text (pypdf / plain text)
    └─> Split into chunks (RecursiveTextSplitter)
-   └─> Generate embeddings (OpenAI / mock)
+   └─> Generate embeddings (Anthropic / mock)
    └─> Store in ChromaDB
    └─> Update DB: completed + stats
 ```
