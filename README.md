@@ -263,7 +263,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [LangChain](https://langchain.com/) - LLM orchestration
 - [Next.js](https://nextjs.org/) - React framework
 - [TailwindCSS](https://tailwindcss.com/) - CSS framework
-- [OpenAI](https://openai.com/) - AI models
+- [I integrated this project with Claude haiku 4.5](https://www.anthropic.com/claude/haiku) - AI models
 
 ---
 
