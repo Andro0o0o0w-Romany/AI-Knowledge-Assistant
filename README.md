@@ -190,7 +190,7 @@ ai-knowledge-assistant/
 | `SECRET_KEY` | JWT signing key | Required |
 | `DATABASE_URL` | Database connection URL | `sqlite+aiosqlite:///./knowledge_assistant.db` |
 | `OPENAI_API_KEY` | OpenAI API key | Optional (mock mode) |
-| `Anthropic_MODEL` | GPT model to use | `Claude haiku 4.5` |
+| `Anthropic_MODEL` | Anthropic model to use | `Claude haiku 4.5` |
 | `OPENAI_EMBEDDING_MODEL` | Embedding model | `text-embedding-3-small` |
 | `CHUNK_SIZE` | Text chunk size | `1000` |
 | `CHUNK_OVERLAP` | Chunk overlap | `200` |
