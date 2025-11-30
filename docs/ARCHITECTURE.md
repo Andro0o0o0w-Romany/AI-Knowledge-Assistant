@@ -43,7 +43,7 @@ The AI Knowledge Assistant is a full-stack application designed to help users bu
               │                         │                     │
               ▼                         ▼                     ▼
 ┌─────────────────────────┐  ┌─────────────────────┐  ┌───────────────────┐
-│      File Storage       │  │      ChromaDB       │  │     OpenAI API    │
+│      File Storage       │  │      ChromaDB       │  │   Anthropic API   |
 │   (Local Filesystem)    │  │  (Vector Database)  │  │   (LLM + Embed)   │
 └─────────────────────────┘  └─────────────────────┘  └───────────────────┘
               │
