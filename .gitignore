@@ -42,7 +42,9 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
-env.example
+
+# Keep .env.example for documentation (it has no secrets)
+!.env.example
 
 # Database
 *.db
